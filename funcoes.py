@@ -13,8 +13,8 @@ def opcoes():
 1 - Inserir Veículo
 2 - Remover Veículo
 3 - Buscar Veículo
-4 - Listar Vagas Ocupadas
-5 - Listar Vagas Livres 
+4 - Quantidade de Vagas Ocupadas
+5 - Quantidade de Vagas Livres 
 6 - Sair
 """
 
@@ -24,7 +24,6 @@ def opcoes():
 def inserirVeiculo(estacionamento):
     placa = input("Digite a placa: ").upper()
     estacionamento[placa] = [input("Digite o nome do proprietário do veículo: ").upper(),
-                            input("Digite o número da vaga ocupada: ").upper(),
                             input("Digite o modelo do veículo: ").upper(),
                             input("Digite a cor do veículo: ").upper(),
                             input("Digite a hora de entrada: ")]
@@ -34,10 +33,9 @@ def removerVeiculo(estacionamento, vagas, total_vagas, placa):
     lista = estacionamento.get(placa) 
     if lista != None:
         print("Nome...........: " + lista[0])
-        print("Vaga...........: " + lista[1])
-        print("Modelo.........: " + lista[2])
-        print("Cor............: " + lista[3])
-        print("Hora...........: " + lista[4])
+        print("Modelo.........: " + lista[1])
+        print("Cor............: " + lista[2])
+        print("Hora...........: " + lista[3])
         resposta = input("Deseja retirar veículo: ").upper()
         if resposta == "SIM": 
             del estacionamento[placa]
@@ -55,20 +53,20 @@ def buscarVeiculo(estacionamento, placa):
     lista = estacionamento.get(placa) 
     if lista != None:
         print("Nome...........: " + lista[0])
-        print("Vaga...........: " + lista[1])
-        print("Modelo.........: " + lista[2])
-        print("Cor............: " + lista[3])
-        print("Hora...........: " + lista[4])
+        print("Modelo.........: " + lista[1])
+        print("Cor............: " + lista[2])
+        print("Hora...........: " + lista[3])
     else:
         print("Veículo não encontrado.")
 
 def listarVagasDisponiveis(vagas):
     print(f"Há {vagas} vagas disponíveis")
 
-def listarVagasOcupadas(estacionamento):
+def listarVagasOcupadas(estacionamento, total_vagas):
     if estacionamento:
+        print(f"Total de vagas ocupadas: {total_vagas}")
         for placa, dados in estacionamento.items():
-            print(f"Placa: {placa} - Vaga: {dados[1]}")
+            print(f"Placa: {placa} -")
     else:
         print("Nenhuma vaga ocupada.")
 

@@ -1,7 +1,11 @@
 from funcoes import*
 
 print("------------ESTACIONAMENTO--------------")
-vagas = int(input("Digite o total de vagas disponíveis: "))
+vagas = input("Digite o total de vagas disponíveis: ")
+if vagas.isdigit():
+    vagas = int(vagas)
+else:
+    print("Por favor, digite apenas números.")
 total_vagas = 0
 limpar_tela()
 estacionamento = {}
@@ -22,7 +26,8 @@ while True:
             print("Estacionamento cheio.")
             limpar()
     elif escolha == "2":
-        removerVeiculo(estacionamento, vagas, input("Digite a placa do veículo que deseja remover: ").upper())
+        placa = input("Digite a placa do veículo que deseja remover: ").upper()
+        vagas, total_vagas = removerVeiculo(estacionamento, vagas, total_vagas, placa)
         limpar()
     elif escolha == "3":
         placa = input("Digite a placa do veículo que deseja buscar: ").upper()
@@ -30,7 +35,7 @@ while True:
         input("Pressione Enter para voltar ao menu.")
         limpar()
     elif escolha == "4":
-        listarVagasOcupadas(estacionamento)
+        listarVagasOcupadas(estacionamento, total_vagas)
         input("Pressione Enter para voltar ao menu.")
         limpar()
     elif escolha == "5":
