@@ -86,6 +86,19 @@ target/
 profile_default/
 ipython_config.py
 
+# Ignorar arquivos de configuração e temporários do sistema
+.gitconfig
+.viminfo
+*.info
+*.json
+
+# Ignorar todos os arquivos baixados que começam com 'https'
+https*download*
+
+# Ignorar arquivos de configuração e dependências de IDEs
+*.ecl
+
+
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
 #   intended to run in multiple environments; otherwise, check them in:
